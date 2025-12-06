@@ -98,4 +98,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 SESSION_COOKIE_AGE = 100   # 5 minutes timeout
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
+ALLOWED_HOSTS = ['*']
 
