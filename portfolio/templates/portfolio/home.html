@@ -1,0 +1,157 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}Home — My Portfolio{% endblock %}
+
+{% block content %}
+
+<!-- INTRO BOX -->
+<div class="fade-up zoom-in"
+     style="
+    background: #0b1220;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+">
+
+    <!-- LEFT SIDE TEXT -->
+    <div style="flex: 1;">
+        <h1>Hi, I'm Teja 👋</h1>
+
+        <p style="max-width: 600px;">
+            Results-driven B.Tech student in Electrical and Electronics Engineering with a strong foundation in
+            Artificial Intelligence and Intelligent Process Automation. Skilled in Front-End, Full Stack, and IoT development
+            with hands-on experience in building user-centric applications. Proficient in designing intuitive, responsive user
+            interfaces and integrating IoT technologies. Developed and delivered projects that effectively combine hardware and
+            software components to create practical, real-world solutions tailored to user needs.
+        </p>
+
+        <!-- RESUME BUTTON -->
+        <a href="{% static 'resume.pdf' %}" class="btn" download>Download Resume</a>
+    </div>
+
+    <!-- RIGHT SIDE IMAGE (TALL RECTANGULAR SHAPE) -->
+    <div>
+        <img src="{% static 'myphoto.jpg' %}"
+             alt="My Photo"
+             class="profile-pic"
+              style="
+                width: 300px;
+                height: 340px;
+                border-radius: 12px;
+                object-fit: cover;
+                border: 3px solid #3b82f6;
+            ">
+
+    </div>
+
+</div>
+
+<!-- DIVIDER -->
+<hr style="border: 0; height: 2px; background: white; margin: 40px 0;">
+
+
+<!-- TECHNICAL SKILLS -->
+<h2>Technical Skills</h2>
+
+{% if technical_skills %}
+    <div class="grid-2">
+        {% for skill in technical_skills %}
+            <div class="card">
+                <h3>{{ skill.name }}</h3>
+                <p>{{ skill.level }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No technical skills added yet.</p>
+{% endif %}
+
+<hr>
+
+
+<!-- SOFT SKILLS -->
+<h2>Soft Skills</h2>
+
+{% if soft_skills %}
+    <div class="grid-2">
+        {% for skill in soft_skills %}
+            <div class="card">
+                <h3>{{ skill.name }}</h3>
+                <p>{{ skill.level }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No soft skills added yet.</p>
+{% endif %}
+
+<hr>
+
+<h2>Certifications</h2>
+
+{% if certifications %}
+    <div class="grid-2">
+        {% for cert in certifications %}
+            <div class="card">
+                <h3>{{ cert.title }}</h3>
+                <p><strong>Issued By:</strong> {{ cert.issued_by }}</p>
+                <p><strong>Issue Date:</strong> {{ cert.issue_date }}</p>
+
+                {% if cert.resource_link %}
+                    <a href="{{ cert.resource_link }}" target="_blank"
+                       class="btn" style="margin-top: 10px; display: inline-block;">
+                        View Certificate
+                    </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No certifications added yet.</p>
+{% endif %}
+
+<hr>
+
+<!-- ACHIEVEMENTS -->
+<h2>Achievements & Activities</h2>
+
+{% if achievements %}
+    <div class="grid-2">
+        {% for ach in achievements %}
+            <div class="card">
+                {% if ach.image %}
+                    <img src="{{ ach.image.url }}" alt="{{ ach.title }}"
+                         style="width: 100%; border-radius: 6px; margin-bottom: 8px;">
+                {% endif %}
+
+                <h3>{{ ach.title }}</h3>
+                <p>{{ ach.short_description }}</p>
+
+                {% if ach.details %}
+                    <p style="font-size: 14px; opacity: 0.9;">{{ ach.details }}</p>
+                {% endif %}
+
+                {% if ach.date %}
+                    <p style="font-size: 12px; opacity: 0.8;">Date: {{ ach.date }}</p>
+                {% endif %}
+
+                {% if ach.resource_link %}
+                    <a href="{{ ach.resource_link }}" target="_blank"
+                       class="btn" style="margin-top: 10px; display: inline-block;">
+                        View Resource
+                    </a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No achievements added yet.</p>
+{% endif %}
+
+{% endblock %}

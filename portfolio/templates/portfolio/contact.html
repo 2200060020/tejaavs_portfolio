@@ -1,0 +1,40 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Contact — My Portfolio{% endblock %}
+
+{% block extra_nav %}
+    <a href="/dashboard-admin/" style="color:#3b82f6; font-weight:600;">Admin Login</a>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="fade-up">Contact Me</h1>
+<p>If you’d like to collaborate or have any questions, feel free to reach out.</p>
+
+{% if success %}
+    <p style="color: lightgreen; font-weight: bold;">
+        ✅ Thank you! Your message has been sent.
+    </p>
+{% endif %}
+
+<form method="post" class="zoom-in">
+    {% csrf_token %}
+    <div style="margin-bottom: 10px;">
+        <label>Your Name:</label><br>
+        <input type="text" name="name" required style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label>Your Email:</label><br>
+        <input type="email" name="email" required style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <label>Your Message:</label><br>
+        <textarea name="message" rows="5" required style="width: 100%; padding: 8px;"></textarea>
+    </div>
+
+    <button type="submit" class="btn">Send</button>
+</form>
+
+{% endblock %}

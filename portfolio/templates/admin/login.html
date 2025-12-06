@@ -1,0 +1,76 @@
+{% extends "admin/login.html" %}
+{% load static %}
+
+{% block extrastyle %}
+<style>
+    /* Full page background */
+    body.login {
+        background: #0f172a;   /* same as your site */
+        color: #e5e7eb;
+    }
+
+    /* Center box (login card) */
+    #content {
+        background: #020617;
+        border-radius: 12px;
+        padding: 30px 30px 20px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.8);
+        border: 1px solid #1e293b;
+    }
+
+    /* “Django administration” header */
+    #header {
+        background: #020617;
+        border-bottom: 1px solid #1e293b;
+    }
+    #header h1 {
+        color: #e5e7eb !important;
+    }
+
+    /* Labels & text */
+    .login #content-main .form-row label {
+        color: #e5e7eb;
+        font-weight: 600;
+    }
+
+    /* Inputs */
+    .login input[type="text"],
+    .login input[type="password"] {
+        background: #020617;
+        color: #e5e7eb;
+        border-radius: 6px;
+        border: 1px solid #1f2937;
+        padding: 6px 8px;
+    }
+
+    .login input[type="text"]:focus,
+    .login input[type="password"]:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 1px #3b82f6;
+        outline: none;
+    }
+
+    /* Login button */
+    .login input[type="submit"] {
+        background: #3b82f6;
+        border-radius: 6px;
+        border: none;
+        padding: 6px 16px;
+        font-weight: 600;
+        color: #ffffff;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .login input[type="submit"]:hover {
+        background: #2563eb;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.6);
+    }
+
+    /* Small text under form */
+    .login #content-main p {
+        color: #cbd5e1;
+    }
+</style>
+{% endblock %}
